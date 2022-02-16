@@ -384,7 +384,7 @@ class _PyTorchGradient(Explainer):
         self.model = model.eval()
 
         multi_output = False
-        outputs = self.model(*self.model_inputs)
+        outputs = self.model(self.model_inputs[0]) #use the first input as an example
         if len(outputs.shape) > 1 and outputs.shape[1] > 1:
             multi_output = True
         self.multi_output = multi_output
